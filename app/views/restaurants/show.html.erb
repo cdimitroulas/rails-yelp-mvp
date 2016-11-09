@@ -8,6 +8,26 @@
   <%= @restaurant.phone_number %>
 <% end %>
 
-<!-- link_to "Add a review!", new_restaurant_review_path -->
+<% if @restaurant.reviews.first %>
+  <h4>Reviews</h4>
+  <table>
+    <thead>
+      <th>Review content</th>
+      <th>Review rating</th>
+    </thead>
+    <tbody>
+    <% @restaurant.reviews.each do |review| %>
+      <tr>
+        <td><%= review.content %></td>
+        <td><%= review.rating %>/5</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to "Add a review!", new_restaurant_review_path(@restaurant) %>
+
+<br><br>
 
 <%= link_to "Return to restaurants index", root_path %>
