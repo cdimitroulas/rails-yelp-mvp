@@ -4,5 +4,12 @@
   justify-content: center;
 }
 .padded {
+  padding-top: 2em;
   padding-bottom: 1em;
+}
+#new_review, #review-form-title{
+  margin: 0 100px 50px 100px;
+}
+#review-form-title{
+  margin-bottom: 0;
 }

@@ -42,10 +42,9 @@
   </div>
 <% end %>
 
-<%= link_to "Add a review!", new_restaurant_review_path(@restaurant) %>
+<%= render "reviews/newreview", review: @restaurant.reviews.build, restaurant: @restaurant %>
 
-<br><br>
-<%= link_to root_path do %>
+<%= link_to root_path, class: "btn-homepage" do %>
   <div class="btn btn-success">
     Return to restaurants index
   </div>
