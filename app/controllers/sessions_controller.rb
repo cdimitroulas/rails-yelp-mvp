@@ -1,19 +1,14 @@
 class SessionsController < ApplicationController
 
-  def login
-    @user = User.find_by_email(params[:email])
-    if @user && @user.password == params[:password]
-      redirect_to restaurants_path
-    else
-      redirect_to root_path
-    end
-  end
-
   def new
+    @user = User.new
   end
 
   def create
-    if @user = User.authenticate(params[:email], params[:password])
+    @user = User.find_by_email(params[:user][:email])
+
+    # Checks if the user exists and if the password is correct
+    if @user && @user.authenticate(params[:user][:password])
       session[:current_user_id] = @user.id
       redirect_to root_path
     else
@@ -23,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:current_user_id] = nil
-    redirect_to root_path
+    redirect_to login_path
   end
 end

@@ -1,21 +1,17 @@
 class UsersController < ApplicationController
 
-  # def login
-  #   @user = User.find_by_email(params[:email])
-  #   if @user && @user.password == params[:password]
-  #     redirect_to restaurants_path
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
-
   def new
     @user = User.new
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to create_path
+    @user = User.new(user_params)
+    if @user.save
+      session[:current_user_id] = @user.current_user_id
+      redirect_to root_path
+    else
+      render action: :new, user: @user
+    end
   end
 
   private
