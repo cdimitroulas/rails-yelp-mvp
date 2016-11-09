@@ -1,0 +1,8 @@
+<h1>Edit your restaurant details</h1>
+<%= simple_form_for @restaurant, url: creator_restaurant_path do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"], label: 'Select the restaurant category' %>
+  <%= f.input :phone_number %>
+  <%= f.button :submit, "Edit your Restaurant!", class: "btn btn-primary" %>
+<% end %>

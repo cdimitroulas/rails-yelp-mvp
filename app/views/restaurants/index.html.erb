@@ -27,6 +27,12 @@
       </div>
       <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
         <p><%= restaurant.category %></p>
+        <% if restaurant.user_id == @user.id%>
+          <%= link_to "Edit", edit_creator_restaurant_path(restaurant) %>
+          <%= link_to "Delete", creator_restaurant_path(restaurant),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        <% end %>
       </div>
     </div>
     <% end %>

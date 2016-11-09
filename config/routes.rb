@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # Namespace for user-specific actions
   namespace :creator do
     resources :restaurants, only: [:edit, :update, :destroy] do
-      resources :reviews, only: [:edit, :update, :destroy]
+      resources :reviews, only: [:edit, :update]
     end
   end
 

@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   before_action :require_login # THIS NEEDS TO BE IN APPLICATIONCONTROLLER
   before_action :set_restaurant
-  before_action :set_user, only: [:create]
+  before_action :set_user
 
   def create
     @review = @restaurant.reviews.build(review_params)

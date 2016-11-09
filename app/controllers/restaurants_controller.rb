@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
 
   before_action :require_login # THIS NEEDS TO BE IN APPLICATIONCONTROLLER
   before_action :set_restaurant, only: [:show]
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user
 
   def index
     @restaurants = Restaurant.all

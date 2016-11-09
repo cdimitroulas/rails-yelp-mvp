@@ -34,6 +34,9 @@
         </div>
         <div class="col-xs-4 text-justify">
           <p><%= review.content %></p>
+          <% if review.user_id == @user.id%>
+            <%= link_to "Edit", edit_creator_restaurant_review_path(review) %>
+          <% end %>
         </div>
       </div>
       <% end %>
