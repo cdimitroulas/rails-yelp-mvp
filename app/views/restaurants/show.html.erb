@@ -1,2 +1,13 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<h1><%= @restaurant.name %></h1>
+
+<h4>Address</h4>
+<%= @restaurant.address %>
+
+<% if @restaurant.phone_number %>
+  <h4>Contact details</h4>
+  <%= @restaurant.phone_number %>
+<% end %>
+
+<!-- link_to "Add a review!", new_restaurant_review_path -->
+
+<%= link_to "Return to restaurants index", root_path %>
