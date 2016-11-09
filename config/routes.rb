@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root to: "restaurants#index"
 
-
-
   resources :restaurants, only: [:index, :show, :new, :create] do
     resources :reviews, only: [:create]
   end
@@ -15,6 +13,6 @@ Rails.application.routes.draw do
   # Routes for logging in/out etc.
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  get "/logout", to: "sesssions#destroy"
+  get "/logout", to: "sessions#destroy"
 
 end
