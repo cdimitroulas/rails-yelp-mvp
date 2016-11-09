@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
+  # Namespace for user-specific actions
+  namespace :creator do
+    resources :restaurants, only: [:edit, :update, :destroy] do
+      resources :reviews, only: [:edit, :update, :destroy]
+    end
+  end
+
 end
