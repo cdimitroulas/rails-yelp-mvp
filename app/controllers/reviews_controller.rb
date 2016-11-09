@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :require_login
   before_action :set_restaurant
 
   def create
@@ -15,5 +16,11 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:content, :rating)
+  end
+
+  def require_login
+    unless session[:current_user_id]
+      redirect_to login_path
+    end
   end
 end

@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+
+  before_action :require_login
   before_action :set_restaurant, only: [:show]
 
   def index
@@ -30,5 +32,11 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :category, :phone_number)
+  end
+
+  def require_login
+    unless session[:current_user_id]
+      redirect_to login_path
+    end
   end
 end
