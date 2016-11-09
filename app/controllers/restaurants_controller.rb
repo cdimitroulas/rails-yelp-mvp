@@ -6,6 +6,11 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    if @restaurant
+      return
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -14,16 +19,16 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.create(restaurant_params)
-    redirect_to restaurants_path
+    redirect_to restaurant_path(@restaurant)
   end
 
   private
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id]) if Restaurant.where("id = #{params[:id]}")[0]
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :category)
+    params.require(:restaurant).permit(:name, :address, :category, :phone_number)
   end
 end

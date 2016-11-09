@@ -1,8 +1,14 @@
-.footer {
+.wrapper-black{
   background-color: #302626;
   padding: 20px 50px;
   height: 15vh;
+  display: flex;
+  align-items: center;
 }
-#icons-social-media{
+.footer {
+  display: flex;
+  align-items: center;
   color: white;
+  font-size: 25px;
+  justify-content: space-between;
 }

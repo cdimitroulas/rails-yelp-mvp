@@ -1,33 +1,52 @@
-<h1><%= @restaurant.name %></h1>
+<div class="header padded text-center">
+  <h1><%= @restaurant.name %></h1>
 
-<h4>Address</h4>
-<%= @restaurant.address %>
+  <div id="address">
+    <h4>Address -</h4>
+    <%= @restaurant.address %>
+  </div>
+  <% if @restaurant.phone_number %>
+    <div id="phone-number">
+      <h4>Contact details -</h4>
+      <%= @restaurant.phone_number %>
+    </div>
+  <% end %>
 
-<% if @restaurant.phone_number %>
-  <h4>Contact details</h4>
-  <%= @restaurant.phone_number %>
-<% end %>
-
+</div>
 <% if @restaurant.reviews.first %>
-  <h4>Reviews</h4>
-  <table>
-    <thead>
-      <th>Review content</th>
-      <th>Review rating</th>
-    </thead>
-    <tbody>
-    <% @restaurant.reviews.each do |review| %>
-      <tr>
-        <td><%= review.content %></td>
-        <td><%= review.rating %>/5</td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <div class="padded">
+    <hr>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-4 text-justify">
+          <h4>Rating</h4>
+        </div>
+        <div class="col-xs-4 text-justify">
+          <h4>Content</h4>
+        </div>
+
+      </div>
+      <% @restaurant.reviews.each do |review| %>
+
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-4 text-justify">
+          <%= raw ("#{icon('star-o')} " * review.rating.to_i)  %>
+        </div>
+        <div class="col-xs-4 text-justify">
+          <p><%= review.content %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <hr>
+  </div>
 <% end %>
 
 <%= link_to "Add a review!", new_restaurant_review_path(@restaurant) %>
 
 <br><br>
-
-<%= link_to "Return to restaurants index", root_path %>
+<%= link_to root_path do %>
+  <div class="btn btn-success">
+    Return to restaurants index
+  </div>
+<% end %>

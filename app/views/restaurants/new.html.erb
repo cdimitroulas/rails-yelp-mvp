@@ -3,5 +3,6 @@
   <%= f.input :name %>
   <%= f.input :address %>
   <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"], label: 'Select the restaurant category' %>
+  <%= f.input :phone_number %>
   <%= f.button :submit, "Create your Restaurant!", class: "btn btn-primary" %>
 <% end %>
