@@ -5,8 +5,10 @@
         <%= image_tag "melon.svg", {class: "img-rounded", id: "logo"} %>
       <% end %>
     </div>
-    <div class="links">
-      <%= link_to "logout", logout_path %>
-    </div>
+    <% unless controller_name == "sessions" || controller_name == "users" %>
+      <div class="links">
+        <%= link_to "logout", logout_path %>
+      </div>
+    <% end %>
   </div>
 </div>
