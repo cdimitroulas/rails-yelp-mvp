@@ -7,11 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="<%= controller_name%> <%= action_name %>">
+
+    <!-- Navigation bar -->
+    <%= render "layouts/navigation" %>
+
+
+    <div class="bg-grey">
+      <div class="container yield-page">
+        <%= yield %>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <%= render "layouts/footer" %>
   </body>
 </html>

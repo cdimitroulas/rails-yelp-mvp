@@ -1,20 +1,40 @@
 <h1>Restaurants</h1>
 
-<table>
-  <% @restaurants.each do |restaurant| %>
-    <tr>
-      <td>
-        <%= link_to restaurant_path(restaurant) do %>
-          <%= restaurant.name %>
-        <% end %>
-      </td>
-      <td><%= restaurant.address %></td>
-      <td><%= restaurant.category %></td>
-      <% if restaurant.phone_number %>
-        <td><%= restaurant.phone_number %></td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<div class="padded">
 
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
+        <h4>Name</h4>
+      </div>
+      <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
+        <h4>Address</h4>
+      </div>
+      <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
+        <h4>Category</h4>
+      </div>
+    </div>
+    <% @restaurants.each do |restaurant| %>
+
+    <div class="row">
+      <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
+        <%= link_to restaurant_path(restaurant) do %>
+              <p><%= restaurant.name %></p>
+            <% end %>
+      </div>
+      <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
+        <p><%= restaurant.address %></p>
+      </div>
+      <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
+        <p><%= restaurant.category %></p>
+      </div>
+      <% if restaurant.phone_number %>
+        <div class="col-xs-3 col-sm-2 col-sm-offset-2 text-justify">
+          <p><%= restaurant.category %></p>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
 <%= link_to "Add your restaurant to our website!", new_restaurant_path %>
