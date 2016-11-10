@@ -1,4 +1,4 @@
-class Creator::ReviewsController < ApplicationController
+class Creator::ReviewsController < CreatorController
   before_action :set_user
   before_action :set_review, only: [:update]
 
@@ -12,12 +12,10 @@ class Creator::ReviewsController < ApplicationController
   private
 
   def set_review
-    @review = Review.find(params[:id])
+    @review = @user.reviews.find(params[:id])
   end
 
-  def set_user
-    @user = User.find(session[:current_user_id])
-  end
+
 
   def review_params
     params.require(:review).permit(:content, :rating)

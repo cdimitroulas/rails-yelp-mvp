@@ -1,4 +1,4 @@
-class Creator::RestaurantsController < ApplicationController
+class Creator::RestaurantsController < CreatorController
 
   before_action :set_restaurant
 
@@ -18,7 +18,11 @@ class Creator::RestaurantsController < ApplicationController
   private
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = @user.restaurants.find_by_id(params[:id])
+    unless @restaurant
+      flash[:notice] = 'You do not have permission to access this page'
+      redirect_to root_path
+    end
   end
 
   def restaurant_params
